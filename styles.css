@@ -1,13 +1,15 @@
-.game {
-    display: flex;
-    justify-content: center;
-
-}
 .container {
     display:flex;
     justify-content: center;
     flex-wrap: wrap;
+    width: 400px;
+    height: 400px; 
+    border: 2px solid #000; 
+    box-sizing: border-box; 
 }
 .child {
-    flex: 1 0 10%;
+    flex-basis: calc(100% / 16); 
+    aspect-ratio: 1;
+    border: 1px solid #000;
+    box-sizing: border-box;
   }

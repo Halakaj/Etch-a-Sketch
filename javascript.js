@@ -1,17 +1,48 @@
-const container = document.querySelector(".container");
+let clear = document.querySelector("button");
+let container = document.querySelector(".container");
 
-for (let i = 0; i < 256; i++){
-    const child = document.createElement("div");
-    child.classList.add("child");
-    container.appendChild(child);
+clear.addEventListener('click', ()=>{ 
+    resetSize()
+})
+
+
+function resetSize(){
+        
+        let number = prompt("What size would you like the grid to be? (1-100)");
+        container.style.gridTemplateRows = `repeat(${number}, 1fr)`;
+        container.style.gridTemplateColumns = `repeat(${number}, 1fr)`;
+        createGrid(number); 
 }
-const resetButton = document.getElementById("resetButton");
-resetButton.addEventListener("click", () => {
-    const children = document.querySelectorAll(".child");
-    children.forEach(child => child.style.backgroundColor = "");
-});
-container.addEventListener("mouseover", (event) => {
-    if (event.target.classList.contains("child")) {
-        event.target.style.backgroundColor = "lightblue";
+        
+        
+function createGrid(size){
+
+
+
+    container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    
+    for (let i = 0; i < size*size; i++) {
+        
+        let square = document.createElement("div");
+        square.style.backgroundColor = "white";
+        container.appendChild(square);
+
+        square.addEventListener('mouseover', e=>{
+            square.style.backgroundColor = "black";
+        })
+
+
+
+        function clearGrid(){
+            clear.addEventListener('click', e=>{
+                square.style.backgroundColor = "white"
+           })
+        }
+        
+
+        clearGrid();    
     }
-});
+}
+
+createGrid(16);

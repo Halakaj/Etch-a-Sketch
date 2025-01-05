@@ -1,0 +1,13 @@
+.game {
+    display: flex;
+    justify-content: center;
+
+}
+.container {
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.child {
+    flex: 1 0 10%;
+  }
